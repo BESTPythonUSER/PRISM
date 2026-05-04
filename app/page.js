@@ -1,8 +1,27 @@
 import Link from "next/link";
+import React from 'react';
+import { useState } from 'react';
+import './globals.css';
 
 export default function Home() {
+  const [hoverEffect, setHoverEffect] = useState(false);
+
   return (
-    <>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+        background: hoverEffect
+          ? 'linear-gradient(135deg, #ff7eb3, #ff758c)'
+          : 'linear-gradient(135deg, #0070f3, #00d4ff)',
+        transition: 'background 0.5s ease',
+      }}
+      onMouseEnter={() => setHoverEffect(true)}
+      onMouseLeave={() => setHoverEffect(false)}
+    >
       {/* Navigation */}
       <nav className="nav">
         <div className="nav-logo"><span>PRISM</span></div>
@@ -86,6 +105,6 @@ export default function Home() {
       }}>
         <p>© 2026 PRISM. Built for smarter learning.</p>
       </footer>
-    </>
+    </div>
   );
 }
